@@ -14,6 +14,7 @@ const Navbar = () => {
           <Link to="/services" className="hover:text-primary transition-colors">Services</Link>
           <Link to="/internships" className="hover:text-primary transition-colors">Internships</Link>
           <Link to="/careers" className="hover:text-primary transition-colors">Careers</Link>
+          <Link to="/verify" className="hover:text-primary transition-colors font-semibold text-primary">Verify</Link>
         </div>
         <div className="hidden md:block">
           <Link to="/contact" className="bg-gray-900 text-white px-5 py-2.5 rounded-full font-medium hover:bg-primary transition-colors shadow-sm">

@@ -7,6 +7,7 @@ import Services from './pages/Services';
 import Internships from './pages/Internships';
 import Careers from './pages/Careers';
 import Contact from './pages/Contact';
+import CertificateVerify from './pages/CertificateVerify';
 
 import AdminDashboard from './pages/AdminDashboard';
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="/internships" element={<Internships />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/verify" element={<CertificateVerify />} />
             <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </main>
