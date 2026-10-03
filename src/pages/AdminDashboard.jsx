@@ -67,10 +67,12 @@ const AdminDashboard = () => {
 
   const handleLogout = async () => {
     try {
+      localStorage.removeItem('isAdmin');
       await signOut(auth);
     } catch (error) {
       console.error("Error logging out", error);
     }
+    window.location.href = '/admin/login';
   };
 
   return (

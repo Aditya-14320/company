@@ -34,7 +34,7 @@ const Footer = () => {
               <li>Indrapuri C Sector</li>
               <li>Near Croma, Bhopal</li>
               <li className="pt-2">
-                <a href="mailto:hello@adyvanta.com" className="text-white hover:text-primary transition-colors">hello@adyvanta.com</a>
+                <a href="mailto:hello@adyvanta.website" className="text-white hover:text-primary transition-colors">hello@adyvanta.website</a>
               </li>
               <li>
                 <a href="tel:1800880220" className="text-white hover:text-primary transition-colors">1800-880-220</a>
