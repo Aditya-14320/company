@@ -13,21 +13,23 @@ const servicesList = [
 
 const Services = () => {
   return (
-    <div className="py-16 bg-gray-50 min-h-screen">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center mb-4">Our Services</h1>
-        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-          We offer a wide range of IT solutions designed to help your business grow and thrive in the digital age.
-        </p>
+    <div className="py-20 bg-gray-50 min-h-screen">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Our Premium IT <span className="text-primary">Services</span></h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            At Adyvanta Technologies, we offer a wide range of specialized IT solutions designed to help your business innovate, grow, and thrive in the digital age.
+          </p>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {servicesList.map(service => (
-            <div key={service.id} className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition text-center group">
-              <div className="text-4xl text-primary mb-4 flex justify-center group-hover:scale-110 transition-transform">
+            <div key={service.id} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+              <div className="w-16 h-16 bg-rose-50 rounded-2xl text-primary flex items-center justify-center text-3xl mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300 mx-auto">
                 {service.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-              <p className="text-gray-500 text-sm">{service.description}</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">{service.title}</h3>
+              <p className="text-gray-600 leading-relaxed text-center">{service.description}</p>
             </div>
           ))}
         </div>

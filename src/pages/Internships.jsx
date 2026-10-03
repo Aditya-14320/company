@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 const internshipsList = [
-  { id: 1, title: 'Web Development Intern', duration: '3 Months', location: 'Remote' },
-  { id: 2, title: 'Digital Marketing Intern', duration: '6 Months', location: 'Hybrid' },
-  { id: 3, title: 'Graphic Design Intern', duration: '3 Months', location: 'Remote' },
+  { id: 1, title: 'Web Development Intern', duration: '1 to 6 months', location: 'Remote' },
+  { id: 2, title: 'Digital Marketing Intern', duration: '1 to 6 months', location: 'Remote / Hybrid' },
+  { id: 3, title: 'Graphic Design Intern', duration: '1 to 6 months', location: 'Remote' },
 ];
 
 const Internships = () => {

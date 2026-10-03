@@ -1,20 +1,39 @@
 import { useState } from 'react';
-import { FaCheckCircle, FaTimesCircle, FaSearch } from 'react-icons/fa';
+import { FaCheckCircle, FaTimesCircle, FaSearch, FaSpinner, FaDownload } from 'react-icons/fa';
+import { db } from '../firebase/config';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 
 const CertificateVerify = () => {
   const [certId, setCertId] = useState('');
   const [verificationResult, setVerificationResult] = useState(null); // null | 'success' | 'error'
+  const [certData, setCertData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleVerify = (e) => {
+  const handleVerify = async (e) => {
     e.preventDefault();
     if (!certId.trim()) return;
 
-    // TODO: Connect to Firebase to verify actual certificate ID
-    // Simulating an API call
-    if (certId.trim().toUpperCase() === 'TECHNOVA2026') {
-      setVerificationResult('success');
-    } else {
+    setLoading(true);
+    setVerificationResult(null);
+    setCertData(null);
+
+    try {
+      const q = query(collection(db, "certificates"), where("certId", "==", certId.trim().toUpperCase()));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        // Found the cert
+        const docSnap = querySnapshot.docs[0];
+        setCertData(docSnap.data());
+        setVerificationResult('success');
+      } else {
+        setVerificationResult('error');
+      }
+    } catch (error) {
+      console.error("Error verifying certificate:", error);
       setVerificationResult('error');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -33,7 +52,7 @@ const CertificateVerify = () => {
                 type="text" 
                 value={certId}
                 onChange={(e) => setCertId(e.target.value)}
-                placeholder="e.g. TECHNOVA2026" 
+                placeholder="e.g. ADYVANTA2026" 
                 required
                 className="w-full p-4 pl-12 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900 font-medium" 
               />
@@ -41,23 +60,40 @@ const CertificateVerify = () => {
             </div>
             <button 
               type="submit" 
-              className="mt-6 w-full bg-primary text-white py-3 px-6 rounded-full font-semibold hover:bg-rose-700 transition-colors shadow-md"
+              disabled={loading}
+              className="mt-6 w-full flex items-center justify-center bg-primary text-white py-3 px-6 rounded-full font-semibold hover:bg-rose-700 transition-colors shadow-md disabled:bg-rose-400"
             >
-              Verify Now
+              {loading ? <FaSpinner className="animate-spin mr-2" /> : 'Verify Now'}
             </button>
           </form>
 
           {/* Result Area */}
-          {verificationResult === 'success' && (
-            <div className="p-6 bg-green-50 border border-green-200 rounded-xl animate-fade-in">
-              <FaCheckCircle className="text-4xl text-green-500 mx-auto mb-3" />
-              <h3 className="text-xl font-bold text-green-800 mb-1">Certificate Verified!</h3>
-              <p className="text-green-700">This is a valid certificate issued by TechNova.</p>
-              <div className="mt-4 text-sm text-green-600 space-y-1">
-                <p><span className="font-semibold">Issued To:</span> John Doe</p>
-                <p><span className="font-semibold">Course/Role:</span> Web Development Intern</p>
-                <p><span className="font-semibold">Issue Date:</span> October 2, 2026</p>
+          {verificationResult === 'success' && certData && (
+            <div className="p-6 bg-green-50 border border-green-200 rounded-xl animate-fade-in text-left">
+              <div className="text-center">
+                <FaCheckCircle className="text-4xl text-green-500 mx-auto mb-3" />
+                <h3 className="text-xl font-bold text-green-800 mb-1">Certificate Verified!</h3>
+                <p className="text-green-700 mb-4">This is a valid certificate.</p>
               </div>
+              <div className="mt-4 text-sm text-green-800 space-y-2 bg-white p-4 rounded border border-green-100 mb-4">
+                <p><span className="font-semibold w-24 inline-block text-green-600">ID:</span> {certData.certId}</p>
+                <p><span className="font-semibold w-24 inline-block text-green-600">Issued To:</span> {certData.studentName}</p>
+                <p><span className="font-semibold w-24 inline-block text-green-600">Course/Role:</span> {certData.course}</p>
+                <p><span className="font-semibold w-24 inline-block text-green-600">Issue Date:</span> {certData.issueDate}</p>
+              </div>
+              
+              {certData.fileUrl && (
+                <div className="text-center">
+                  <a 
+                    href={certData.fileUrl} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="inline-flex items-center justify-center bg-green-600 text-white py-2 px-6 rounded-full font-semibold hover:bg-green-700 transition-colors shadow-md"
+                  >
+                    <FaDownload className="mr-2" /> View Certificate Document
+                  </a>
+                </div>
+              )}
             </div>
           )}
 

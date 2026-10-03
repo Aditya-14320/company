@@ -14,7 +14,7 @@ const Home = () => {
               Empowering Next-Gen Talent
             </div>
             <h1 className="text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-              Build Your Future With <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">TechNova</span>
+              Build Your Future With <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Adyvanta</span>
             </h1>
             <p className="text-xl text-gray-600 mb-10 leading-relaxed">
               We deliver cutting-edge IT services for modern businesses and provide career-launching internships for students ready to make an impact.

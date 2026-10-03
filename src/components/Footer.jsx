@@ -8,8 +8,8 @@ const Footer = () => {
           
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="text-2xl font-black text-white tracking-tight flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg"></div>
-              TechNova
+              <img src="/logo.jpg" alt="Adyvanta Logo" className="w-10 h-10 object-contain rounded-md" />
+              Adyvanta
             </Link>
             <p className="text-gray-400 max-w-sm mb-6 leading-relaxed">
               We empower businesses with cutting-edge digital solutions and nurture the next generation of tech leaders through hands-on internships.
@@ -34,7 +34,7 @@ const Footer = () => {
               <li>Indrapuri C Sector</li>
               <li>Near Croma, Bhopal</li>
               <li className="pt-2">
-                <a href="mailto:hello@technova.com" className="text-white hover:text-primary transition-colors">hello@technova.com</a>
+                <a href="mailto:hello@adyvanta.com" className="text-white hover:text-primary transition-colors">hello@adyvanta.com</a>
               </li>
               <li>
                 <a href="tel:1800880220" className="text-white hover:text-primary transition-colors">1800-880-220</a>
@@ -45,7 +45,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} TechNova IT Services. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Adyvanta Technologies. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>

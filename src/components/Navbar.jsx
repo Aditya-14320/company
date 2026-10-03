@@ -17,8 +17,8 @@ const Navbar = () => {
     <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link to="/" className="text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2" onClick={closeMenu}>
-          <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg shrink-0"></div>
-          TechNova
+          <img src="/logo.jpg" alt="Adyvanta Logo" className="w-10 h-10 object-contain rounded-md" />
+          Adyvanta
         </Link>
 
         {/* Desktop Menu */}

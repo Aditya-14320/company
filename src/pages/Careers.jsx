@@ -28,9 +28,14 @@ const Careers = () => {
   };
 
   return (
-    <div className="py-16">
-      <div className="container mx-auto px-4 max-w-5xl">
-        <h1 className="text-4xl font-bold text-center mb-12">Careers at Company</h1>
+    <div className="py-20 bg-white">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Careers at <span className="text-primary">Adyvanta</span></h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Join our team of passionate tech professionals and build solutions that matter.
+          </p>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Opportunities List */}
